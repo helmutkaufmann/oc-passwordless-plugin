@@ -4,7 +4,7 @@ namespace Nocio\Passwordless\Components;
 
 use Cms\Classes\ComponentBase;
 use Winter\Storm\Exception\ApplicationException;
-use Mercator\Passwordless\Models\Token;
+use Nocio\Passwordless\Models\Token;
 use Cms\Classes\Page;
 use Input;
 use Cookie;
