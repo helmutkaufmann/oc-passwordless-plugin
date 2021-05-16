@@ -2,10 +2,9 @@
 
 namespace Nocio\Passwordless\Components;
 
-
 use Cms\Classes\ComponentBase;
-use October\Rain\Exception\ApplicationException;
-use Nocio\Passwordless\Models\Token;
+use Winter\Storm\Exception\ApplicationException;
+use Mercator\Passwordless\Models\Token;
 use Cms\Classes\Page;
 use Input;
 use Cookie;
@@ -52,13 +51,13 @@ class Account extends ComponentBase
                 'description' => 'User model the form authenticates',
                 'type' => 'string',
                 'required' => true,
-                'default' => 'Rainlab\User\Models\User'
+                'default' => 'Winter\User\Models\User'
             ],
             'auth' => [
                 'title' => 'Auth provider',
                 'description' => 'Class or facade that manages the auth state',
                 'type' => 'string',
-                'default' => 'Rainlab\User\Facades\Auth'
+                'default' => 'Winter\User\Facades\Auth'
             ],
             'mail_template' => [
                 'title' => 'Login mail template',
@@ -247,18 +246,18 @@ class Account extends ComponentBase
             return Redirect::to($this->currentPageUrl())->withErrors($validator);
         }
 
+		$base_url = $this->currentPageUrl();
+		
         // Get user
         if (! $user = $this->model::where($email)->first()) {
             if ($this->property('allow_registration')) {
                 $user = $this->model::create($email);
             } else {
-                return Response::json('Sorry, this email is not registered.', 403);
+                return ['#passwordless-login-form' => $this->renderPartial('@invited', compact('base_url'))];
             }
         }
-
-        $base_url = $this->currentPageUrl();
+        
         $this->sendLoginEmail($user, $base_url);
-
         return ['#passwordless-login-form' => $this->renderPartial('@invited', compact('base_url'))];
     }
 

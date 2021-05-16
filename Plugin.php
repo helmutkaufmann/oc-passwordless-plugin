@@ -16,7 +16,7 @@ class Plugin extends PluginBase
             'name'        => 'nocio.passwordless::lang.plugin.name',
             'description' => 'nocio.passwordless::lang.plugin.description',
             'icon'        => 'oc-icon-key',
-            'homepage'    => 'https://github.com/nocio/oc-passwordless-plugin'
+            'homepage'    => 'https://github.com/nocio/wn-passwordless-plugin'
         ];
     }
 

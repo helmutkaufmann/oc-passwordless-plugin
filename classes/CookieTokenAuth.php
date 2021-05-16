@@ -6,7 +6,7 @@ use Cookie;
 use Closure;
 use Response;
 use Nocio\Passwordless\Models\Token;
-use October\Rain\Exception\ApplicationException;
+use Winter\Storm\Exception\ApplicationException;
 
 class CookieTokenAuth
 {

@@ -1,8 +1,17 @@
-This plugin brings passwordless user authentication to OctoberCMS. Instead of filling username and password, frontend users provide their email address and receive a link with login token that registers and authenticates them on the site. Passwordless authentication is [secure](https://auth0.com/blog/is-passwordless-authentication-more-secure-than-passwords/) and can greatly improve the user experience as it simplifies the registration and login process where many users dread having to fill out forms and go through a rigorous registration process.
+# Passwordless Login
+This plugin brings passwordless user authentication to WinterCMS. 
+Instead of filling username and password, frontend users provide their email address and receive a link with login 
+token that registers and authenticates them on the site. Passwordless authentication is 
+[secure](https://auth0.com/blog/is-passwordless-authentication-more-secure-than-passwords/) 
+and can greatly improve the user experience as it simplifies the registration and login process where many users 
+dread having to fill out forms and go through a rigorous registration process.
 
-**Features**
+The plugin is based in [October's Passwordless Login](https://github.com/nocio/oc-passwordless-plugin/blob/master/models/Token.php)
+with slight adaptations. 
 
-- Works well with Rainlab.User plugin as well as custom authentication systems
+## Features
+
+- Works well with Winter.User plugin as well as custom authentication systems
 - Login tokens are valid only once and expire after 30 minutes for increased security while being automatically cleaned from the system
 - Supports redirection after login
 - Optional JSON API to consume user details
@@ -10,38 +19,26 @@ This plugin brings passwordless user authentication to OctoberCMS. Instead of fi
 - Developer friendly and highly customizable
 - Includes a cookie-token authentication method that can minimize repeated logins
 
-### Additional information
-
-In future, the plugin might be extended to allow for
-
-- Option to allow for change of email
-- Improved JSON API
-- Support stateless JWT-based authentication
-- Backend logins
-- ...
-
 If you find this plugin useful, please consider donating to support its further development.
 
----
+## The Account component
 
-The plugin provides an *Account* component that is similiar to Rainlab.User's account component.
 
-### The Account component
-
+The plugin provides an *Account* component that is similiar to Winter.User's account component. 
 The account component provides the main functionality and can be included in any CMS page that should serve as login endpoint.
 
 The Account component has the following properties:
 
-* `model` - [string] specifies the user model the form authenticates (must have an email field). Defaults to `Rainlab\User\Models\User`
-* `auth` - [string] specifies a class of facade that manages the authentication state (see below). Defaults to `Rainlab\User\Facades\Auth`
-* `mail_template` [string] the email template of the login mail. Defaults to `nocio.passwordless::mail.login`
+* `model` - [string] specifies the user model the form authenticates (must have an email field). Defaults to `Winter\User\Models\User`
+* `auth` - [string] specifies a class of facade that manages the authentication state (see below). Defaults to `Winter\User\Facades\Auth`
+* `mail_template` [string] the email template of the login mail. Defaults to `mercator.passwordless::mail.login`
 * `redirect` [dropdown] specifies a page name to redirect to after sign in (can be overwritten, see below)
 * `allow_registration` - [checkbox] if disabled, only existing users can request a login
 * `api` - [checkbox] if enabled, the component will expose an API endpoint ``?api`` to query the authentication status
 
 The component will display the email login form and -- if the user is logged in -- display account information. Note that the component requires the ajax framework to work.
 
-### The authentication manager
+## The authentication manager
 
 The authentication manager that can be specified in the Account component is a class or facade that manages the user authentication through a standardised API:
 
@@ -52,11 +49,11 @@ The authentication manager that can be specified in the Account component is a c
 
 Available auth managers:
 
-*Rainlab\User\Facades\Auth*
+*Winter\User\Facades\Auth*
 
-Auth manager provided by the Rainlab.User plugin.
+Auth manager provided by the Winter.User plugin.
 
-*Nocio\Passwordless\Classes\CookieTokenAuth*
+*Mercator\Passwordless\Classes\CookieTokenAuth*
 
 Auth manager that stores authentication state as token in a httpOnly cookie. The user stays authenticated until the cookie is deleted or the token expires. The manager can be used as middleware to protect endpoints that require authentication. The authentication method is particuarly useful for RESTful APIs. Note that the cookie will only be transfered via secure https connections. If you want to allow http connections you can set ``COOKIE_TOKEN_SECURE=true`` in the ``.env`` file.
 
@@ -74,15 +71,21 @@ If enabled, the Account component exposes and JSON API endpoint that can be cons
 
 ### Developer API
 
-The plugin provides a token model ``Nocio\Passwordless\Models\Token`` that can be re-used by developers to implement token management. The model provides two main functions:
+The plugin provides a token model ``Mercator\Passwordless\Models\Token`` that can be re-used by developers to implement token management. The model provides two main functions:
 
 - ``generate($user, $expires = 10, $scope = 'default')`` which returns a token for a given ``$user`` model object (or more general the token payload). Make sure to specificy a custom scope, e.g. `myplugin` to avoid scope collision.
 - ``parse($raw_token, $delete = false, $scope = null)`` which parses (and optionally ``$delete``s) a provided ``$raw_token`` in a given ``$scope`` and returns the correspoding ``$user`` model. It raises an ``ApplicationException`` if the token is expired, invalid or cannot be parsed.
 
-More details can be found in the [model class documentation](https://github.com/nocio/oc-passwordless-plugin/blob/master/models/Token.php).
+More details can be found in the [model class documentation](https://github.com/helmutkaufmann/wn-passwordless-plugin/blob/master/models/Token.php).
 
-### Support & Contribution
+## Additional information
 
-I can only offer limited support but will try to answer questions and feature requests on [GitHub](https://github.com/nocio/oc-passwordless-plugin). I am also happy to accept pull requests, especially for the missing features list on the Plugin details page.
+In future, the plugin might be extended to allow for
+
+- Option to allow for change of email
+- Improved JSON API
+- Support stateless JWT-based authentication
+- Backend logins
+- ...
 
 **Please consider donating to support the ongoing development if you find this plugin useful.**

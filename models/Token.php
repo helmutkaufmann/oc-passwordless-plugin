@@ -5,7 +5,7 @@ namespace Nocio\Passwordless\Models;
 use Model;
 use Hash;
 use Carbon\Carbon;
-use October\Rain\Exception\ApplicationException;
+use Winter\Storm\Exception\ApplicationException;
 
 class Token extends Model
 {
