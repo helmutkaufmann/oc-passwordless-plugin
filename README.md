@@ -21,6 +21,13 @@ with slight adaptations.
 
 If you find this plugin useful, please consider donating to support its further development.
 
+## Installation
+For the time being, use composer to install:
+```
+composer nocio/wn-passwordless-plugin
+php artisan winter:up
+```
+
 ## The Account component
 
 

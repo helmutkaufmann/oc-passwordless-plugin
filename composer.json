@@ -14,7 +14,7 @@
             "name": "Helmut Kaufmann",
             "role": "Author",
 	    "homepage": "https://mercator.li"
-        },
+        }
     ],
     "minimum-stability": "dev",
     "require": {
