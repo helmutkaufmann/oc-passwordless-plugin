@@ -1,4 +1,4 @@
-<?php namespace Nocio\Passwordless;
+<?php namespace Mercator\Passwordless;
 
 use System\Classes\PluginBase;
 
@@ -13,10 +13,10 @@ class Plugin extends PluginBase
     public function componentDetails()
     {
         return [
-            'name'        => 'nocio.passwordless::lang.plugin.name',
-            'description' => 'nocio.passwordless::lang.plugin.description',
-            'icon'        => 'oc-icon-key',
-            'homepage'    => 'https://github.com/nocio/wn-passwordless-plugin'
+            'name'        => 'mercator.passwordless::lang.plugin.name',
+            'description' => 'mercator.passwordless::lang.plugin.description',
+            'icon'        => 'wn-icon-key',
+            'homepage'    => 'https://github.com/mercator/wn-passwordless-plugin'
         ];
     }
 
@@ -27,7 +27,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'Nocio\Passwordless\Components\Account' => 'passwordlessAccount'
+            'Mercator\Passwordless\Components\Account' => 'passwordlessAccount'
         ];
     }
 
@@ -38,14 +38,14 @@ class Plugin extends PluginBase
     public function registerMailTemplates()
     {
         return [
-            'nocio.passwordless::mail.login' => 'Passwordless login'
+            'mercator.passwordless::mail.login' => 'Passwordless login'
         ];
     }
 
     public function registerSchedule($schedule)
     {
         $schedule->call(function () {
-            \Nocio\Passwordless\Models\Token::clearExpired();
+            \Mercator\Passwordless\Models\Token::clearExpired();
         })->daily();
     }
 }

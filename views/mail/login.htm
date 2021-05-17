@@ -1,17 +1,20 @@
-subject = "Your login"
+subject = "Your passwordless login"
 layout = "default"
 ==
-<p>Nearly there!</p>
+<h3>Passwordless Login</h3>
 
-<p>You've requested a passwordless login at {{ base_url }}. Please proceed by clicking this link:</p>
-
+<p>You've requested a passwordless login at {{ base_url }}. Please proceed by clicking the this
 <a href="{{ authentication_url }}">
-    Login
+    link
 </a>
+</p>
 
-<p>A few things to notice</p>
+<p>Alternatively, copy the following URL in your browser: {{ authentication_url | raw}} </p>
+</p>
+
+<p>A few things to note:</p>
 <ul>
-	<li>This login link will be valid just once and for the next 30 minutes</li>
-	<li>If you click it, you'll be logged in with the browser you are using</li>
-	<li>If you haven't requested the login yourself, just ignore this mail</li>
+	<li>The link above will be valid just once and for the next 15 minutes only.</li>
+	<li>When you click on the link, you'll be logged in with your default browser.</li>
+	<li>If you haven't requested the login yourself, just ignore this mail.</li>
 </ul>

@@ -24,7 +24,7 @@ If you find this plugin useful, please consider donating to support its further 
 ## Installation
 For the time being, use composer to install:
 ```
-composer nocio/wn-passwordless-plugin
+composer mercator/wn-passwordless-plugin
 php artisan winter:up
 ```
 
@@ -38,7 +38,7 @@ The Account component has the following properties:
 
 * `model` - [string] specifies the user model the form authenticates (must have an email field). Defaults to `Winter\User\Models\User`
 * `auth` - [string] specifies a class of facade that manages the authentication state (see below). Defaults to `Winter\User\Facades\Auth`
-* `mail_template` [string] the email template of the login mail. Defaults to `nocio.passwordless::mail.login`
+* `mail_template` [string] the email template of the login mail. Defaults to `mercator.passwordless::mail.login`
 * `redirect` [dropdown] specifies a page name to redirect to after sign in (can be overwritten, see below)
 * `allow_registration` - [checkbox] if disabled, only existing users can request a login
 * `api` - [checkbox] if enabled, the component will expose an API endpoint ``?api`` to query the authentication status
@@ -60,7 +60,7 @@ Available auth managers:
 
 Auth manager provided by the Winter.User plugin.
 
-*Nocio\Passwordless\Classes\CookieTokenAuth*
+*Mercator\Passwordless\Classes\CookieTokenAuth*
 
 Auth manager that stores authentication state as token in a httpOnly cookie. The user stays authenticated until the cookie is deleted or the token expires. The manager can be used as middleware to protect endpoints that require authentication. The authentication method is particuarly useful for RESTful APIs. Note that the cookie will only be transfered via secure https connections. If you want to allow http connections you can set ``COOKIE_TOKEN_SECURE=true`` in the ``.env`` file.
 
@@ -78,7 +78,7 @@ If enabled, the Account component exposes and JSON API endpoint that can be cons
 
 ### Developer API
 
-The plugin provides a token model ``Nocio\Passwordless\Models\Token`` that can be re-used by developers to implement token management. The model provides two main functions:
+The plugin provides a token model ``Mercator\Passwordless\Models\Token`` that can be re-used by developers to implement token management. The model provides two main functions:
 
 - ``generate($user, $expires = 10, $scope = 'default')`` which returns a token for a given ``$user`` model object (or more general the token payload). Make sure to specificy a custom scope, e.g. `myplugin` to avoid scope collision.
 - ``parse($raw_token, $delete = false, $scope = null)`` which parses (and optionally ``$delete``s) a provided ``$raw_token`` in a given ``$scope`` and returns the correspoding ``$user`` model. It raises an ``ApplicationException`` if the token is expired, invalid or cannot be parsed.

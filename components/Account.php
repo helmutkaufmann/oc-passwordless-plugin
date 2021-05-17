@@ -1,10 +1,10 @@
 <?php
 
-namespace Nocio\Passwordless\Components;
+namespace Mercator\Passwordless\Components;
 
 use Cms\Classes\ComponentBase;
 use Winter\Storm\Exception\ApplicationException;
-use Nocio\Passwordless\Models\Token;
+use Mercator\Passwordless\Models\Token;
 use Cms\Classes\Page;
 use Input;
 use Cookie;
@@ -63,7 +63,7 @@ class Account extends ComponentBase
                 'title' => 'Login mail template',
                 'description' => 'The mail template that will be send to the user',
                 'type' => 'string',
-                'default' => 'nocio.passwordless::mail.login'
+                'default' => 'mercator.passwordless::mail.login'
             ],
             'redirect' => [
                 'title'       => 'Redirect to',

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nocio\Passwordless\Models;
+namespace Mercator\Passwordless\Models;
 
 use Model;
 use Hash;
@@ -13,7 +13,7 @@ class Token extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'nocio_passwordless_tokens';
+    public $table = 'mercator_passwordless_tokens';
 
     /**
      * Fillable fields for the model.

@@ -1,6 +1,6 @@
 plugin:
-    name: 'nocio.passwordless::lang.plugin.name'
-    description: 'nocio.passwordless::lang.plugin.description'
+    name: 'mercator.passwordless::lang.plugin.name'
+    description: 'mercator.passwordless::lang.plugin.description'
     author: 'noc.io'
-    icon: oc-icon-key
-    homepage: 'https://github.com/nocio/oc-passwordless-plugin'
+    icon: wn-icon-key
+    homepage: 'https://github.com/helmutkaufmann/wn-passwordless-plugin'

@@ -1,11 +1,11 @@
 <?php
 
-namespace Nocio\Passwordless\Classes;
+namespace Mercator\Passwordless\Classes;
 
 use Cookie;
 use Closure;
 use Response;
-use Nocio\Passwordless\Models\Token;
+use Mercator\Passwordless\Models\Token;
 use Winter\Storm\Exception\ApplicationException;
 
 class CookieTokenAuth
@@ -15,9 +15,9 @@ class CookieTokenAuth
 
     /**
      * @param $user
-     * @param int $expires Minutes, default = 60 * 24 * 30 = 1 month
+     * @param int $expires Minutes, default = 15 minutes
      */
-    public static function login($user, $expires = 43200) {
+    public static function login($user, $expires = 15) {
         $token = Token::generate($user, $expires, 'auth');
         Cookie::queue(
             self::COOKIE_NAME,

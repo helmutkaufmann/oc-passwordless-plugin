@@ -1,6 +1,6 @@
 <?php return [
     'plugin' => [
         'name' => 'Passwordless',
-        'description' => 'A plugin for passwordless authentication'
+        'description' => 'A plugin for passwordless authentication.'
     ]
 ];

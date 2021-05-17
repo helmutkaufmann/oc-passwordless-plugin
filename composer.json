@@ -1,5 +1,5 @@
 {
-    "name": "nocio/wn-passwordless-plugin",
+    "name": "mercator/wn-passwordless-plugin",
     "type": "winter-plugin",
     "description": "Passwordless frontend login.",
     "keywords": ["winter", "wintercms", "laravel", "user", "login", "passwordless" ,"no", "password", "user", "extension", "plugin", "php"],
@@ -7,7 +7,7 @@
     "authors": [
 	{
             "name": "Nocio",
-            "role": "Author ",
+            "role": "Original Author of the October-CMS plugin",
 	    "homepage": "https://github.com/nocio"
     },
         {
