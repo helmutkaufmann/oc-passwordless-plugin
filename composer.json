@@ -5,16 +5,17 @@
     "keywords": ["winter", "wintercms", "laravel", "user", "login", "passwordless" ,"no", "password", "user", "extension", "plugin", "php"],
     "license": "MIT",
     "authors": [
+        {
+            "name": "Helmut Kaufmann",
+            "role": "Author",
+            "homepage": "https://mercator.li"
+        },
+
 	{
             "name": "Nocio",
             "role": "Original Author of the October-CMS plugin",
 	    "homepage": "https://github.com/nocio"
-    },
-        {
-            "name": "Helmut Kaufmann",
-            "role": "Author",
-	    "homepage": "https://mercator.li"
-        }
+    	}
     ],
     "minimum-stability": "dev",
     "require": {
